@@ -17,4 +17,19 @@ services:
       dockerfile: _docker/app/Dockerfile
     volumes:
       - ./:/var/www/
+    depends_on:
+      - db
     container_name: project_app
+  
+  db:
+    image: mysql:8.0
+    restart: always
+    volumes:
+      - ./tmp/db:/var/lib/mysql
+    environment: 
+      MYSQL_DATABASE: laradocker
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 8101:3306
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    container_name: project_db
