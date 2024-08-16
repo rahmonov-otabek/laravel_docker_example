@@ -6,6 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-   This is html! 
+   This is index php! 
+   <?= "nok" ?>
 </body>
 </html>
